@@ -42,8 +42,23 @@ def __check_matrix(matrix: List[List[int]]) -> None:
 
 
 if __name__ == "__main__":
-    print(list(unroll_matrix([
+    assert list(unroll_matrix([
+        [0]
+    ])) == [0]
+    assert list(unroll_matrix([
         [1, 2, 3],
         [4, 5, 7],
         [8, 9, 1]
-    ])))
+    ])) == [5, 2, 3, 7, 1, 9, 8, 4, 1]
+    assert list(unroll_matrix([
+        [9, 2, 3],
+        [8, 1, 4],
+        [7, 6, 5]
+    ])) == [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    assert list(unroll_matrix([
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25],
+    ])) == [13, 8, 9, 14, 19, 18, 17, 12, 7, 2, 3, 4, 5, 10, 15, 20, 25, 24, 23, 22, 21, 16, 11, 6, 1]
