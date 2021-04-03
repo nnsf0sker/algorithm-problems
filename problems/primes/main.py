@@ -1,7 +1,8 @@
 from math import sqrt
-from typing import Any
 from typing import Generator
 from typing import Optional
+
+from usefull_tools.numbers import check_is_natural
 
 
 def primes(n: Optional[int], priority: str = "speed") -> Generator[int, None, None]:
@@ -11,7 +12,7 @@ def primes(n: Optional[int], priority: str = "speed") -> Generator[int, None, No
     :param priority: Algorithm efficiency type ("speed" or "memory")
     :return: Generator of prime numbers
     """
-    __is_positive_integer(n)
+    check_is_natural(n)
     if priority == "speed":
         return __primes_with_speed_priority(n)
     elif priority == "memory":
@@ -61,16 +62,6 @@ def __primes_with_memory_priority(n: Optional[int]) -> Generator[int, None, None
         if is_prime:
             yield checking_n
         checking_n += 1
-
-
-def __is_positive_integer(value: Any) -> None:
-    """
-    Raising error if value is not positive integer
-    """
-    if not isinstance(value, int):
-        raise TypeError(f"{type(value).__name__} is not instance of class {int.__name__}")
-    if value <= 0:
-        raise ValueError(f"{value} is less than or equal to 0")
 
 
 if __name__ == "__main__":
